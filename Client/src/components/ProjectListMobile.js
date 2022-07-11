@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-import { formatDateTime } from '../utils/helperFunctions'
-import { cellStyles, spanStyles } from '../styles/customStyles'
-import { Link } from 'react-router-dom';
-import { ProjectMenu } from './ProjectMenu';
-import '../styles/ProjectListMobile.css'
+import React, { Fragment } from "react"
+import { formatDateTime } from "../utils/helperFunctions"
+import { cellStyles, spanStyles } from "../styles/customStyles"
+import { Link } from "react-router-dom"
+import { ProjectMenu } from "./ProjectMenu"
+import "../styles/ProjectListMobile.css"
 
 function ProjectListMobile({ projects = [] }) {
   const mappedProjects = projects.map((project, i) => (
@@ -16,44 +16,54 @@ function ProjectListMobile({ projects = [] }) {
           <i className="bi bi-link-45deg"></i>
         </li>
         <li>
-          <span style={{ ...spanStyles }}>
-            Created By:
-          </span>
-          <div style={{
-            ...cellStyles,
-          }}>{project.createdBy.username}</div>
+          <span style={{ ...spanStyles }}>Created By:</span>
+          <div
+            style={{
+              ...cellStyles,
+            }}
+          >
+            {project.createdBy.username}
+          </div>
         </li>
         <li>
-          <span style={{ ...spanStyles }}>
-            Members:
-          </span>
-          <div style={{
-            ...cellStyles,
-          }}>{project.assignedUsers.length + 1}</div>
+          <span style={{ ...spanStyles }}>Members:</span>
+          <div
+            style={{
+              ...cellStyles,
+            }}
+          >
+            {project.assignedUsers.length + 1}
+          </div>
         </li>
         <li>
-          <span style={{ ...spanStyles }}>
-            Target Date:
-          </span>
-          <div style={{
-            ...cellStyles,
-          }}>{formatDateTime(project?.targetEndDate)}</div>
+          <span style={{ ...spanStyles }}>Target Date:</span>
+          <div
+            style={{
+              ...cellStyles,
+            }}
+          >
+            {formatDateTime(project?.targetEndDate)}
+          </div>
         </li>
         <li>
-          <span style={{ ...spanStyles }}>
-            Created At:
-          </span>
-          <div style={{
-            ...cellStyles,
-          }}>{formatDateTime(project.createdAt)}</div>
+          <span style={{ ...spanStyles }}>Created At:</span>
+          <div
+            style={{
+              ...cellStyles,
+            }}
+          >
+            {formatDateTime(project.createdAt)}
+          </div>
         </li>
         <li>
-          <span style={{ ...spanStyles }}>
-            Updated:
-          </span>
-          <div style={{
-            ...cellStyles,
-          }}>{formatDateTime(project.updatedAt)}</div>
+          <span style={{ ...spanStyles }}>Updated:</span>
+          <div
+            style={{
+              ...cellStyles,
+            }}
+          >
+            {formatDateTime(project.updatedAt)}
+          </div>
         </li>
         <li className="projectItemButtons">
           <div>

@@ -184,7 +184,10 @@ function IssuePage({ issue, user }) {
         <div className="list-details">
           <div className="list-text">
             <span>Created By</span>
-            <p>{Capitalize(issue?.createdBy.username)}, {formatDateMonthDayYear(issue?.createdAt)}</p>
+            <p>
+              {Capitalize(issue?.createdBy.username)},{" "}
+              {formatDateMonthDayYear(issue?.createdAt)}
+            </p>
           </div>
           <div className="list-text">
             <span>Updated</span>

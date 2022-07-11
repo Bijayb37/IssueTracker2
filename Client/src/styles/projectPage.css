@@ -57,9 +57,10 @@ table {
 .tableHeaders {
   margin-bottom: 0px;
 }
+
 .filterButtons p {
   margin-bottom: 0px;
-  font-size:0.9em;
+  font-size: 0.9em;
 }
 
 @media (max-width: 450px) {
@@ -69,6 +70,7 @@ table {
     margin-right: 0px;
   }
 }
+
 @media (max-width: 767px) {
   .filterButtons {
     order: 3;
@@ -76,4 +78,3 @@ table {
     margin-right: 0px;
   }
 }
-

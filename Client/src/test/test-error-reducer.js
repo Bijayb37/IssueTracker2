@@ -1,6 +1,6 @@
-import { ADD_ERROR, REMOVE_ERROR } from "../actionTypes"
+import { ADD_ERROR, REMOVE_ERROR } from "../store/actionTypes"
 
-const errorReducer = (state = { message: null }, action) => {
+const testErrorReducer = (state = { message: null }, action) => {
   switch (action.type) {
     case ADD_ERROR:
       return { ...state, message: action.errorMessage }
@@ -10,4 +10,4 @@ const errorReducer = (state = { message: null }, action) => {
       return state
   }
 }
-export default errorReducer
+export default testErrorReducer

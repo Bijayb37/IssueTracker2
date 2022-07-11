@@ -61,24 +61,27 @@ function TestTable({ columns, data, numColumns }) {
             </option>
           ))}
         </select>
-          <p>Page {pageIndex + 1} of {pageOptions.length}</p>
-          &nbsp;
-          <button
-            className="btn page-btn"
-            onClick={() => previousPage()}
-            disabled={!canPreviousPage}
-          >
-            <i className="bi bi-chevron-left"></i>
-          </button>
-          &nbsp;
-          <button
-            className="btn page-btn"
-            onClick={() => nextPage()}
-            disabled={!canNextPage}
-          >
-            <i className="bi bi-chevron-right"></i>
-          </button>
-          &nbsp;
+        <p>
+          Page {pageIndex + 1} of {pageOptions.length}
+        </p>
+        &nbsp;
+        <button
+          id="previous page"
+          className="btn page-btn"
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
+          <i className="bi bi-chevron-left"></i>
+        </button>
+        &nbsp;
+        <button
+          className="btn page-btn"
+          onClick={() => nextPage()}
+          disabled={!canNextPage}
+        >
+          <i className="bi bi-chevron-right"></i>
+        </button>
+        &nbsp;
       </div>
     </div>
   )

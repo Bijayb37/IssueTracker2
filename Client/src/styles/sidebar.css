@@ -7,10 +7,12 @@
   position: sticky;
   top: 0;
 }
+
 .stickySidebar {
   position: sticky;
   top: 0;
 }
+
 .sidebarH1 {
   font-weight: 700;
   font-size: 30px;
@@ -95,6 +97,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .sidebarLogo>img {
   height: 40px;
   width: 40px;

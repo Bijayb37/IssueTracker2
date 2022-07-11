@@ -2,13 +2,10 @@ import React, { useMemo, useState, useCallback } from "react"
 import TestTable from "../components/TestTable"
 import {
   projectPageIssueColumns,
-  membersColumns,
   issueChangesColumns,
 } from "../data/columns"
-import Collapse from "react-bootstrap/Collapse"
 import Card from "react-bootstrap/Card"
 import DialogTemplate from "../components/DialogTemplate"
-import useToggler from "../hooks/useToggle"
 import IssueListMobile from "../components/IssueListMobile"
 import HistoryListMobile from "../components/HistoryListMobile"
 import { useMediaQuery } from "react-responsive"
@@ -17,21 +14,18 @@ import ProjectForm from "../components/ProjectForm"
 import { useHistory, useParams } from "react-router"
 import { useDispatch } from "react-redux"
 import { deleteProject, leaveProject } from "../store/actions/projectActions"
-import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import "../styles/projectPage.css"
 import {
   Capitalize,
   formatDateMonthDayYear,
   formatTimeAgo,
-  formatDateTime,
 } from "../utils/helperFunctions"
 import { Link } from "react-router-dom"
 
 function ProjectPage(props) {
   const { project, issues, user } = props
   const { projectId } = useParams()
-  const [show, toggle] = useToggler(false)
   const [filterValue, setFilterValue] = useState("all")
   const filterIssues = useCallback(
     (i) => {
@@ -54,15 +48,9 @@ function ProjectPage(props) {
         : [],
     [issues, projectId, filterIssues]
   )
-  const userData = useMemo(
-    () => (project ? [...project.assignedUsers, project.createdBy] : []),
-    [project]
-  )
+
   const issueColumns = useMemo(() => projectPageIssueColumns(), [])
-  const usersColumns = useMemo(
-    () => membersColumns(project?.createdBy),
-    [project]
-  )
+
   const changesColumns = useMemo(() => issueChangesColumns, [])
   const changesData = useMemo(() => (project ? project.history : []), [project])
   const isMobile = useMediaQuery({ maxWidth: 450 })
@@ -206,14 +194,6 @@ function ProjectPage(props) {
           <Card className="projectIssuesCard non-table">
             <Card.Body className="cardBody">
               {projectDetails()}
-              <Collapse in={show}>
-                <div className={"assignedDeveloperTable"}>
-                  <div className="cardHeader">
-                    <h2 className="tableHeaders">Members</h2>
-                  </div>
-                  <TestTable columns={usersColumns} data={userData} small />
-                </div>
-              </Collapse>
             </Card.Body>
           </Card>
           <Card className="projectIssuesCard">

@@ -1,11 +1,13 @@
-import { SET_CURRENT_USER } from "../actionTypes"
+import { SET_CURRENT_USER } from "../store/actionTypes"
 
 const defaultState = {
-  isAuthenticated: false,
-  user: {},
+  isAuthenticated: true,
+  user: {
+    id: 1,
+  },
 }
 
-const authReducer = (state = defaultState, action) => {
+const testAuthReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SET_CURRENT_USER:
       return {
@@ -17,4 +19,4 @@ const authReducer = (state = defaultState, action) => {
   }
 }
 
-export default authReducer
+export default testAuthReducer

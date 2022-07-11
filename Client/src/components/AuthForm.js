@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { authUser } from "../store/actions/authActions"
 import { removeError } from "../store/actions/errorActions"
@@ -11,7 +11,6 @@ export default function AuthForm(props) {
   const { errors } = useSelector((state) => state)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
-
   const [state, setState] = useState({
     username: "",
     password: "",
@@ -40,12 +39,16 @@ export default function AuthForm(props) {
   history.listen(() => {
     dispatch(removeError())
   })
+  useEffect(() => {
+    return () => {}
+  }, [])
+
   return (
     <div className="authFormContainer">
       <div className="formBox">
         <div className="d-flex flex-column signupBox">
           <AnimatePresence>
-            <motion.form className="authForm">
+            <motion.form className="authForm" key={32}>
               {signup ? (
                 <motion.div
                   className="loginInputs"
@@ -55,13 +58,11 @@ export default function AuthForm(props) {
                   key={1}
                 >
                   <div className="logo">
-                    <img src="/issuesIcon.png" />
+                    <img src="/issuesIcon.png" alt="Issues Icon" />
                     <h1>Issues Tracker</h1>
                   </div>
                   <span className="inputTitle">Sign Up</span>
-                  <p className="inputAside">
-                    Enter your Details below
-                  </p>
+                  <p className="inputAside">Enter your Details below</p>
                   <div className="labelAndInput">
                     <label htmlFor="email" className="form-label">
                       Email Address
@@ -71,6 +72,7 @@ export default function AuthForm(props) {
                       type="text"
                       className="form-control form-input"
                       name="email"
+                      id="email"
                       placeholder="name@example.com"
                     />
                   </div>
@@ -84,6 +86,7 @@ export default function AuthForm(props) {
                       className="form-control form-input"
                       name="username"
                       placeholder="Username"
+                      id="username"
                     />
                   </div>
                   <div className="labelAndInput">
@@ -96,6 +99,7 @@ export default function AuthForm(props) {
                       className="form-control form-input"
                       name="password"
                       placeholder="Password"
+                      id="password"
                     />
                   </div>
                   <div className="loginButtons">
@@ -120,7 +124,7 @@ export default function AuthForm(props) {
                   key={2}
                 >
                   <div className="logo">
-                    <img src="/issuesIcon.png" />
+                    <img src="/issuesIcon.png" alt="Issues Icon" />
                     <h1>Issues Tracker</h1>
                   </div>
                   <span className="inputTitle">Log In To Issues</span>
@@ -137,6 +141,7 @@ export default function AuthForm(props) {
                       className="form-control form-input"
                       name="username"
                       placeholder="Username/Email Address"
+                      id="email"
                     />
                   </div>
                   <div className="labelAndInput">
@@ -149,6 +154,7 @@ export default function AuthForm(props) {
                       className="form-control form-input"
                       name="password"
                       placeholder="Password"
+                      id="password"
                     />
                   </div>
                   <div className="loginButtons">
@@ -173,9 +179,9 @@ export default function AuthForm(props) {
                 <span>Loading...</span>
               </>
             )}
-            {errors.message && (
+            {errors?.message && (
               <div className="alert alert-danger mt-3" role="alert">
-                {errors.message}
+                {errors?.message}
               </div>
             )}
           </AnimatePresence>
