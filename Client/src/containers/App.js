@@ -13,11 +13,11 @@ function App() {
   const { currentUser, projects, issues } = useSelector((state) => state)
   const isLoggedIn = localStorage.jwt || currentUser.isAuthenticated
   const dispatch = useDispatch()
-
+  // console.log(currentUser)
   useEffect(() => {
     dispatch(autoLogin())
-    // eslint-disable-next-line
-  }, [])
+
+  }, [dispatch])
 
   const findProject = (projectId) => {
     return projects.find((project) => project._id === projectId)
@@ -26,7 +26,6 @@ function App() {
   const findIssue = (issueId) => {
     return issues.find((issue) => issue._id === issueId)
   }
-
   // <Redirect to='/login' />
   return (
     <div className="appContainer">

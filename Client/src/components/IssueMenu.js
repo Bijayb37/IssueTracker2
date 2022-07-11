@@ -34,8 +34,8 @@ function IssueMenu({
 
   return (
     <div>
-      <Dropdown>
-        <Dropdown.Toggle as={CustomToggle} id="dropdown-basic-button" title="Dropdown button" />
+      <Dropdown >
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-basic-button" title="Dropdown button" data-testid="test-dropdown"/>
         <Dropdown.Menu className="dropdownMenu">
           <Dropdown.Item className="dropdownItem" as={Link} to={`/issues/${issue._id}`} href="#/action-2">
             <i style={{ marginRight: '10px' }} className="bi bi-link-45deg"></i>

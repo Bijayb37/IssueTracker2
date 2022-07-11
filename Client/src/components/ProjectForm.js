@@ -32,7 +32,7 @@ function ProjectForm({
     ? users.filter(user => user._id !== project.createdBy._id).map((user, i) => (
       { label: user.username, value: user._id }
     ))
-    : users.filter(user => user._id !== currentUser.user.id).map((user, i) => (
+    : users?.filter(user => user._id !== currentUser.user.id).map((user, i) => (
       { label: user.username, value: user._id }
     ))
 
@@ -57,11 +57,11 @@ function ProjectForm({
         <>
           <div className="mb-3" >
             <label htmlFor="projectName" className="form-label">Project Name</label>
-            <input value={state.projectName ? state.projectName : ""} onChange={handleChange} type="text" className="form-control" name="projectName" />
+            <input value={state.projectName ? state.projectName : ""} onChange={handleChange} type="text" className="form-control" name="projectName" aria-label="projectName"/>
           </div>
           <div className="mb-3" >
             <label htmlFor="description" className="form-label">Description</label>
-            <input value={state.description ? state.description : ""} onChange={handleChange} type="text" className="form-control" name="description" />
+            <input value={state.description ? state.description : ""} onChange={handleChange} type="text" className="form-control" name="description" aria-label="description"/>
           </div>
           <div className="mb-3" >
             <label htmlFor="targetEndDate" className="form-label">Target End Date</label>
@@ -81,7 +81,7 @@ function ProjectForm({
           />
         </div>
       </form>
-      {errors.message &&
+      {errors?.message &&
         <div className="alert alert-danger d-flex align-items-center" role="alert">
           <i className="bi bi-exclamation-triangle-fill" style={{ fontSize: "20px", paddingRight: "10px" }}></i>
           <div>

@@ -64,6 +64,7 @@ function TestTable({ columns, data, numColumns }) {
           <p>Page {pageIndex + 1} of {pageOptions.length}</p>
           &nbsp;
           <button
+          id="previous page"
             className="btn page-btn"
             onClick={() => previousPage()}
             disabled={!canPreviousPage}

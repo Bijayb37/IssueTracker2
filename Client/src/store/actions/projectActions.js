@@ -1,33 +1,38 @@
 import { apiCall } from "../../services/api"
-import { ADD_PROJECT, LOAD_PROJECTS, REMOVE_PROJECTS, UPDATE_PROJECTS } from "../actionTypes"
-import { addError, removeError } from './errorActions'
+import {
+  ADD_PROJECT,
+  LOAD_PROJECTS,
+  REMOVE_PROJECTS,
+  UPDATE_PROJECTS,
+} from "../actionTypes"
+import { addError, removeError } from "./errorActions"
 //api call syntax apiCall(method, path, payload)
 
 function loadProjects(projects) {
   return {
     type: LOAD_PROJECTS,
-    projects
+    projects,
   }
 }
 
 function addProject(project) {
   return {
     type: ADD_PROJECT,
-    project
+    project,
   }
 }
 
 function updateProject(newProject) {
   return {
     type: UPDATE_PROJECTS,
-    project: newProject
+    project: newProject,
   }
 }
 
 function removeProject(id) {
   return {
     type: REMOVE_PROJECTS,
-    id
+    id,
   }
 }
 
@@ -36,48 +41,47 @@ export function getProjects() {
     const { currentUser } = getState()
     const { id } = currentUser.user
     apiCall("get", `/${id}/api/projects`)
-      .then(res => dispatch(loadProjects(res)))
-      .catch(err => dispatch(addError(err.message)))
+      .then((res) => dispatch(loadProjects(res)))
+      .catch((err) => dispatch(addError(err.message)))
   }
 }
 
 export function postProject(projectData, closeModal) {
   return (dispatch, getState) => {
-    return new Promise((resolve, reject) => {
       const { currentUser } = getState()
       const { id } = currentUser.user
       apiCall("post", `/api/users/${id}/projects`, projectData)
-        .then(res => {
+        .then((res) => {
           dispatch(removeError())
           dispatch(addProject(res))
           closeModal()
-          resolve()
         })
-        .catch(err => {
+        .catch((err) => {
           dispatch(addError(err.message))
-          reject()
         })
-    })
   }
 }
 
-export function patchProject(projectId, projectData, projectDifferences, closeModal) {
+export function patchProject(
+  projectId,
+  projectData,
+  projectDifferences,
+  closeModal
+) {
   return (dispatch, getState) => {
-    return new Promise((resolve, reject) => {
       const { currentUser } = getState()
       const { id } = currentUser.user
-      apiCall("patch", `/api/users/${id}/projects/${projectId}`, {projectData, projectDifferences})
-        .then(res => {
+      apiCall("patch", `/api/users/${id}/projects/${projectId}`, {
+        projectData,
+        projectDifferences,
+      })
+        .then((res) => {
           dispatch(updateProject(res.project))
           closeModal()
-          resolve()
         })
-        .catch(err => {
-          console.log("patch")
+        .catch((err) => {
           dispatch(addError(err.message))
-          reject()
         })
-    })
   }
 }
 
@@ -86,11 +90,11 @@ export function deleteProject(projectId, history) {
     const { currentUser } = getState()
     const { id } = currentUser.user
     apiCall("delete", `/api/users/${id}/projects/${projectId}`)
-      .then(res => {
+      .then((res) => {
         dispatch(removeProject(res.project._id))
         history && history.push("/projects")
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(addError(err.message))
       })
   }
@@ -101,11 +105,11 @@ export function leaveProject(projectId, history) {
     const { currentUser } = getState()
     const { id } = currentUser.user
     apiCall("patch", `/api/users/${id}/projects/${projectId}/leave`)
-      .then(res => {
+      .then((res) => {
         dispatch(removeProject(res.project._id))
         history && history.push("/projects")
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(addError(err.message))
       })
   }

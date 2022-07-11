@@ -67,6 +67,7 @@ function DialogTemplate({
           <div
             onClick={handleModalOpen}
             style={{ fontWeight: "600", color: "#424660", padding: "4px 16px" }}
+            data-testid="create-project-button"
           >
             <i
               style={{ marginRight: "10px" }}
@@ -103,7 +104,7 @@ function DialogTemplate({
   return (
     <div>
       {triggerButton()}
-      <Modal show={modalShow} onHide={handleModalClose}>
+      <Modal show={modalShow} onHide={handleModalClose} data-testid="test-modal">
         <Modal.Header>
           <Modal.Title>{title}</Modal.Title>
           <i onClick={handleModalClose} className="bi bi-x-lg"></i>

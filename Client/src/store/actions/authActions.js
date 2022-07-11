@@ -50,7 +50,6 @@ export function autoLogin() {
 export function authUser(type, userData, setLoading) {
   return dispatch => {
     dispatch(removeError()) 
-    return new Promise((resolve, reject) => {
       apiCall('post', `/api/auth/${type}`, userData)
         .then(({ token, ...userInfo }) => {
           localStorage.setItem("jwt", token)
@@ -61,13 +60,11 @@ export function authUser(type, userData, setLoading) {
           dispatch(getUsers())
           dispatch(getIssues())
           setLoading(false)
-          resolve()
         })
         .catch(err => {
+          console.log(err)
           dispatch(addError(err.message))
           setLoading(false)
-          reject()
         })
-    })
   }
 }
