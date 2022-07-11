@@ -6,7 +6,7 @@ import projects from "./test-project-reducer"
 const allProjectsReducer = combineReducers({
   projects,
   currentUser,
-  errors
+  errors,
 })
 
 export { allProjectsReducer }

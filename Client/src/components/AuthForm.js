@@ -42,7 +42,7 @@ export default function AuthForm(props) {
   useEffect(() => {
     return () => {}
   }, [])
-  
+
   return (
     <div className="authFormContainer">
       <div className="formBox">

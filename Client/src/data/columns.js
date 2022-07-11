@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import IssueMenu from "../components/IssueMenu"
 import {
-  formatDateTime,
   formatDateTable,
   formatFormDate,
   formatTimeAgo,

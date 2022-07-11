@@ -71,7 +71,7 @@ function SideBar() {
             <div className="stickySidebar">
               <div className="icon">{openButton()}</div>
               <div className="sidebarLogo">
-                <img src="/issuesIcon.png" />
+                <img src="/issuesIcon.png" alt="issues icon"/>
                 <h1>Issues Tracker</h1>
               </div>
               <motion.ul

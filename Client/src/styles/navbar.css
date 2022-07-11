@@ -3,7 +3,7 @@
   justify-content: space-between;
   background-color: #1B1B20;
   color: white;
-  padding:8px 10px;
+  padding: 8px 10px;
   position: sticky;
   top: 0px;
   z-index: 1001;
@@ -21,15 +21,17 @@
 .navbar a {
   color: #425466;
 }
+
 .navbar a:hover {
   background-color: rgb(130, 178, 225);
   color: #425466;
 }
 
-.navbarCanvas a{
+.navbarCanvas a {
   color: rgb(99, 91, 255);
   padding-left: 0px;
 }
+
 .navbarCanvas button {
   color: rgb(99, 91, 255);
   padding-left: 0px;
@@ -45,6 +47,7 @@
   background: none;
   border: none;
 }
+
 .nav-button:hover {
   background-color: rgb(130, 178, 225);
   color: #425466;

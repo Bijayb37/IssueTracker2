@@ -48,17 +48,17 @@ export function getProjects() {
 
 export function postProject(projectData, closeModal) {
   return (dispatch, getState) => {
-      const { currentUser } = getState()
-      const { id } = currentUser.user
-      apiCall("post", `/api/users/${id}/projects`, projectData)
-        .then((res) => {
-          dispatch(removeError())
-          dispatch(addProject(res))
-          closeModal()
-        })
-        .catch((err) => {
-          dispatch(addError(err.message))
-        })
+    const { currentUser } = getState()
+    const { id } = currentUser.user
+    apiCall("post", `/api/users/${id}/projects`, projectData)
+      .then((res) => {
+        dispatch(removeError())
+        dispatch(addProject(res))
+        closeModal()
+      })
+      .catch((err) => {
+        dispatch(addError(err.message))
+      })
   }
 }
 
@@ -69,19 +69,19 @@ export function patchProject(
   closeModal
 ) {
   return (dispatch, getState) => {
-      const { currentUser } = getState()
-      const { id } = currentUser.user
-      apiCall("patch", `/api/users/${id}/projects/${projectId}`, {
-        projectData,
-        projectDifferences,
+    const { currentUser } = getState()
+    const { id } = currentUser.user
+    apiCall("patch", `/api/users/${id}/projects/${projectId}`, {
+      projectData,
+      projectDifferences,
+    })
+      .then((res) => {
+        dispatch(updateProject(res.project))
+        closeModal()
       })
-        .then((res) => {
-          dispatch(updateProject(res.project))
-          closeModal()
-        })
-        .catch((err) => {
-          dispatch(addError(err.message))
-        })
+      .catch((err) => {
+        dispatch(addError(err.message))
+      })
   }
 }
 

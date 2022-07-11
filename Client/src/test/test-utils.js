@@ -2,8 +2,8 @@ import {
   render as rtlRender,
   screen,
   waitForElementToBeRemoved,
-} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+} from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { BrowserRouter } from "react-router-dom"
 import { Provider } from "react-redux"
 import Navbar from "../components/Navbar"
@@ -25,7 +25,7 @@ const render = (ui, { options } = {}, store) => {
       </Provider>
     )
   }
-  return rtlRender(ui, { wrapper: Wrapper})
+  return rtlRender(ui, { wrapper: Wrapper })
 }
 
 const waitForLoadingToFinish = () =>
@@ -34,8 +34,8 @@ const waitForLoadingToFinish = () =>
       ...screen.queryAllByLabelText(/loading/i),
       ...screen.queryAllByText(/loading/i),
     ],
-    {timeout: 4000},
+    { timeout: 4000 }
   )
 
-export * from '@testing-library/react'
-export {render, userEvent , waitForLoadingToFinish}
+export * from "@testing-library/react"
+export { render, userEvent, waitForLoadingToFinish }

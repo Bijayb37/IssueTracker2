@@ -71,20 +71,20 @@ export function postIssue(issueData, projectId, closeModal) {
 
 export function patchIssue(issueId, issueData, issueDifferences, closeModal) {
   return (dispatch, getState) => {
-      const { currentUser } = getState()
-      const { id } = currentUser.user
-      apiCall("patch", `/api/users/${id}/issues/${issueId}`, {
-        issueData,
-        issueDifferences,
+    const { currentUser } = getState()
+    const { id } = currentUser.user
+    apiCall("patch", `/api/users/${id}/issues/${issueId}`, {
+      issueData,
+      issueDifferences,
+    })
+      .then((res) => {
+        dispatch(updateIssue(res.issue._id, res.issue))
+        dispatch(removeError())
+        closeModal()
       })
-        .then((res) => {
-          dispatch(updateIssue(res.issue._id, res.issue))
-          dispatch(removeError())
-          closeModal()
-        })
-        .catch((err) => {
-          dispatch(addError(err.message))
-        })
+      .catch((err) => {
+        dispatch(addError(err.message))
+      })
   }
 }
 

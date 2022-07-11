@@ -13,10 +13,8 @@ function App() {
   const { currentUser, projects, issues } = useSelector((state) => state)
   const isLoggedIn = localStorage.jwt || currentUser.isAuthenticated
   const dispatch = useDispatch()
-  // console.log(currentUser)
   useEffect(() => {
     dispatch(autoLogin())
-
   }, [dispatch])
 
   const findProject = (projectId) => {

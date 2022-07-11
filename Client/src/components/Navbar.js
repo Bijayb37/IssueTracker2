@@ -1,17 +1,15 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { logout } from "../store/actions/authActions"
-import { NavLink, useLocation } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useMediaQuery } from "react-responsive"
 import Offcanvas from "react-bootstrap/Offcanvas"
-import { useHistory } from "react-router-dom"
 import "../styles/navbar.css"
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state)
   const dispatch = useDispatch()
   const [show, setShow] = useState(false)
-  const history = useHistory()
   const { isAuthenticated } = currentUser
   const { username, id: userId } = currentUser.user
   const handleClose = () => setShow(false)
@@ -24,8 +22,8 @@ function Navbar() {
   if (isAuthenticated && isMobile) {
     return (
       <nav className="navbar">
-          <img src="/issuesIcon.png" height="28" width="28" />
-          <h1 className="navbar-heading">Issues Tracker</h1>
+        <img src="/issuesIcon.png" height="28" width="28" alt="issues icon" />
+        <h1 className="navbar-heading">Issues Tracker</h1>
         <i onClick={handleShow} className="bi bi-list navbarIcon"></i>
         <Offcanvas
           placement="end"

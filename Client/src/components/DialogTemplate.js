@@ -39,7 +39,10 @@ function DialogTemplate({
       case "icon-box":
         return (
           <div className="icon-box-div">
-            <i className={`bi ${trigger.icon} icon-box`} onClick={handleModalOpen}></i>
+            <i
+              className={`bi ${trigger.icon} icon-box`}
+              onClick={handleModalOpen}
+            ></i>
           </div>
         )
       case "menu":
@@ -104,7 +107,11 @@ function DialogTemplate({
   return (
     <div>
       {triggerButton()}
-      <Modal show={modalShow} onHide={handleModalClose} data-testid="test-modal">
+      <Modal
+        show={modalShow}
+        onHide={handleModalClose}
+        data-testid="test-modal"
+      >
         <Modal.Header>
           <Modal.Title>{title}</Modal.Title>
           <i onClick={handleModalClose} className="bi bi-x-lg"></i>

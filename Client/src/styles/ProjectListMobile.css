@@ -5,16 +5,16 @@
 }
 
 .itemButtons .bi {
-font-size: 1.25em;
-vertical-align: middle;
+  font-size: 1.25em;
+  vertical-align: middle;
 }
 
 .link {
-text-decoration: none;
-color: #212529;
+  text-decoration: none;
+  color: #212529;
 }
 
 .link:hover, .link:active {
-text-decoration: underline;
+  text-decoration: underline;
 
 }

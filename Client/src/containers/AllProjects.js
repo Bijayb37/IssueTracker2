@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react"
+import React, { useMemo } from "react"
 import ProjectForm from "../components/ProjectForm"
 import TestTable from "../components/TestTable"
 import { projectColumns } from "../data/columns"
@@ -9,7 +9,7 @@ import Card from "react-bootstrap/Card"
 import ProjectListMobile from "../components/ProjectListMobile"
 import "../styles/allProjects.css"
 
-function AllProjects({ history }) {
+function AllProjects() {
   const { projects, currentUser } = useSelector((state) => state)
   const isMobile = useMediaQuery({ maxWidth: 450 })
   const columns = useMemo(() => projectColumns(), [])

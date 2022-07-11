@@ -24,10 +24,7 @@ const initialProjectState = [
   },
 ]
 
-const testProjectReducer = (
-  state = [],
-  action
-) => {
+const testProjectReducer = (state = initialProjectState, action) => {
   switch (action.type) {
     case LOAD_PROJECTS:
       return [...action.projects]

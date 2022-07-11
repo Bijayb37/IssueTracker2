@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useCallback } from "react"
 import { useSelector } from "react-redux"
 import Card from "react-bootstrap/Card"
 import Form from "react-bootstrap/Form"
@@ -15,10 +15,12 @@ function MyProfile() {
   const { username, email, id } = currentUser.user
   const [filterValue, setFilterValue] = useState("all")
 
-  const authMyIssues = (issue) =>
-    issue.createdBy._id === id ||
-    issue.assignedUsers.map((user) => user._id).includes(id)
-
+  const authMyIssues = useCallback(
+    (issue) =>
+      issue.createdBy._id === id ||
+      issue.assignedUsers.map((user) => user._id).includes(id),
+    [id]
+  )
   const allIssues = useMemo(
     () =>
       issues
@@ -32,7 +34,7 @@ function MyProfile() {
             all: issues,
           }
         : [],
-    [issues]
+    [issues, authMyIssues]
   )
 
   const filterRadioButtons = (

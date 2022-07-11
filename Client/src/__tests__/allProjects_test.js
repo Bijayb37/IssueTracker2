@@ -108,6 +108,5 @@ test("creating a project works", async () => {
   })
   await userEvent.click(createProjectButton)
   await waitForElementToBeRemoved(() => screen.queryByTestId("test-modal"))
-  expect(screen.getByRole('link', { name: /big project/i})).toBeInTheDocument()
-  expect(screen.getByRole('heading', { name: /guest/i})).toBeInTheDocument()
+  expect(screen.getByRole("link", { name: /big project/i })).toBeInTheDocument()
 })
