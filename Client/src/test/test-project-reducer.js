@@ -8,6 +8,7 @@ import {
 
 const initialProjectState = [
   {
+    _id: "2",
     assignedUsers: [],
     createdAt: "2022-01-13T02:47:02.799Z",
     createdBy: {

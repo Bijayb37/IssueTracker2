@@ -64,4 +64,7 @@ test("logging in as guest", async () => {
   expect(
     screen.getByRole("heading", { name: "All Projects" })
   ).toBeInTheDocument()
+  const ne = screen.getByRole("link", { name: /issues/i })
+  await userEvent.click(ne)
+  screen.debug()
 })

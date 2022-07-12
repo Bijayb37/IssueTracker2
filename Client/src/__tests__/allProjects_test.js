@@ -34,6 +34,7 @@ const server = setupServer(
       return res(
         ctx.status(200),
         ctx.json({
+          _id: "2",
           projectName: "big project",
           description: "mello",
           assignedUsers: [],

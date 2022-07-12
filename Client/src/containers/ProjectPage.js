@@ -25,6 +25,8 @@ import { Link } from "react-router-dom"
 
 function ProjectPage(props) {
   const { project, issues, user } = props
+  console.log(project)
+  // console.log(issues)
   const { projectId } = useParams()
   const [filterValue, setFilterValue] = useState("all")
   const filterIssues = useCallback(
@@ -101,7 +103,7 @@ function ProjectPage(props) {
   )
 
   const adminButtons = () =>
-    project?.createdBy._id === user.id ? (
+    project?.createdBy._id === user?.id ? (
       <>
         <DialogTemplate
           title="Edit Project"
@@ -139,7 +141,7 @@ function ProjectPage(props) {
         }}
       />
     )
-  console.log(project)
+
   const usersDetails = project?.assignedUsers.map(
     (user) => `${Capitalize(user.username)}, `
   )
@@ -160,7 +162,7 @@ function ProjectPage(props) {
           </ol>
         </nav>
         <div className="pageTitle">
-          <h1 className="display-6">{project.projectName}</h1>
+          <h1 data-testid="project-header" className="display-6">{project.projectName}</h1>
           <div className="icon-boxes">{adminButtons()}</div>
         </div>
         <div className="list-details">
